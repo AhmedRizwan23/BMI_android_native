@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         edtheightFt=findViewById(R.id.edtHeightFt);
         txtresult=findViewById(R.id.txtresult);
         btncalculate=findViewById(R.id.btnCalculate);
+        //added
 
 
     }
