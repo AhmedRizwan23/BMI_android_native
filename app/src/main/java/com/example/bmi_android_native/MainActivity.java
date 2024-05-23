@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,12 +21,14 @@ public class MainActivity extends AppCompatActivity {
 
         TextView txtresult;
         Button btncalculate;
+        LinearLayout LLmain;
 
         edtweight = findViewById(R.id.edtWeight);
         edtheightIn = findViewById(R.id.edtHeightIn);
         edtheightFt = findViewById(R.id.edtHeightFt);
         txtresult = findViewById(R.id.txtresult);
         btncalculate = findViewById(R.id.btnCalculate);
+        LLmain = findViewById(R.id.main);
 
         btncalculate.setOnClickListener(new View.OnClickListener() {
 
@@ -40,10 +43,20 @@ public class MainActivity extends AppCompatActivity {
                 double totalM = totalCm / 100;
                 double BMI = wt / (totalM * totalM);
                 String stringBMI = String.valueOf(BMI);
-                if (BMI > 25) txtresult.setText("You are overweight " + stringBMI.substring(0, 2));
-                else if (BMI < 18)
+                if (BMI > 25) {
+                    txtresult.setText("You are overweight " + stringBMI.substring(0, 2));
+                    LLmain.setBackgroundColor(getResources().getColor(R.color.color_overwieght));
+                } else if (BMI < 18) {
                     txtresult.setText("You are underweight" + stringBMI.substring(0, 2));
-                else txtresult.setText(" You are healthy" + stringBMI.substring(0, 2));
+                    LLmain.setBackgroundColor(getResources().getColor(R.color.color_underw));
+                } else {
+                    txtresult.setText(" You are healthy" + stringBMI.substring(0, 2));
+
+
+                    LLmain.setBackgroundColor(getResources().getColor(R.color.color_good));
+
+
+                }
             }
         });
     }
